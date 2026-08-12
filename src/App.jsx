@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import BrandTicker from './components/BrandTicker';
 import PortfolioGallery from './components/PortfolioGallery';
 import ServicesSection from './components/ServicesSection';
-import AICaptionTool from './components/AICaptionTool';
 import AboutSection from './components/AboutSection';
 import PricingSection from './components/PricingSection';
 import Testimonials from './components/Testimonials';
@@ -19,7 +18,7 @@ export default function App() {
   // Scroll spy to update activeTab dynamically as user scrolls
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'portfolio', 'services', 'ai-tool', 'about', 'pricing', 'contact'];
+      const sections = ['home', 'portfolio', 'services', 'about', 'pricing', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -45,11 +44,6 @@ export default function App() {
     document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleOpenAITool = () => {
-    setActiveTab('ai-tool');
-    document.getElementById('ai-tool')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="min-h-screen relative">
       {/* Navigation Header */}
@@ -65,7 +59,6 @@ export default function App() {
         <Hero
           onExplorePortfolio={handleExplorePortfolio}
           onOpenBooking={() => setBookingModalOpen(true)}
-          onOpenAITool={handleOpenAITool}
         />
 
         {/* Brand Recognition Marquee Bar */}
@@ -77,16 +70,12 @@ export default function App() {
         {/* 3. Services & Offers */}
         <ServicesSection
           onOpenBooking={() => setBookingModalOpen(true)}
-          onOpenAITool={handleOpenAITool}
         />
 
-        {/* 4. AI Caption Tool */}
-        <AICaptionTool onOpenBooking={() => setBookingModalOpen(true)} />
-
-        {/* 5. About Photographer & Workflow */}
+        {/* 4. About Photographer & Workflow */}
         <AboutSection onOpenBooking={() => setBookingModalOpen(true)} />
 
-        {/* 6. Pricing Investment & FAQs */}
+        {/* 5. Pricing Investment & FAQs */}
         <PricingSection onOpenBooking={() => setBookingModalOpen(true)} />
 
         {/* 7. Client Testimonials */}

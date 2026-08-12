@@ -20,7 +20,6 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
     { id: 'home', label: 'Home' },
     { id: 'portfolio', label: 'Portfolio' },
     { id: 'services', label: 'Services' },
-    { id: 'ai-tool', label: 'AI Studio', isSparkle: true },
     { id: 'about', label: 'About' },
     { id: 'pricing', label: 'Pricing' },
     { id: 'contact', label: 'Contact' },
@@ -50,7 +49,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
         boxShadow: isScrolled ? '0 8px 32px rgba(0,0,0,0.4)' : 'none',
       }}
     >
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <button
           onClick={() => handleNavClick('home')}
@@ -58,36 +57,28 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
+            gap: '8px',
             background: 'none',
             border: 'none',
             cursor: 'pointer',
             flexShrink: 0,
           }}
         >
-          <div style={{
-            width: '42px',
-            height: '42px',
-            borderRadius: '12px',
-            background: 'linear-gradient(135deg, #FF6B2C 0%, #E04D14 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            boxShadow: '0 4px 16px rgba(255, 107, 44, 0.3)',
-          }}>
-            <Camera style={{ width: '20px', height: '20px' }} strokeWidth={2.5} />
+          <div className="w-9 h-9 sm:w-[42px] sm:h-[42px] rounded-xl bg-gradient-to-br from-[#FF6B2C] to-[#E04D14] flex items-center justify-center text-white shadow-lg shadow-[#FF6B2C]/20 transition-all duration-300">
+            <Camera className="w-[18px] h-[18px] sm:w-5 sm:h-5" strokeWidth={2.5} />
           </div>
           <div>
-            <span style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '22px',
-              color: 'white',
-              letterSpacing: '-0.01em',
-              display: 'flex',
-              alignItems: 'center',
-            }}>
-              Luminous Ceylon<span style={{ color: '#FF6B2C', fontSize: '26px', marginLeft: '2px' }}>.</span>
+            <span
+              className="text-lg sm:text-[20px] lg:text-[22px]"
+              style={{
+                fontFamily: 'var(--font-display)',
+                color: 'white',
+                letterSpacing: '-0.01em',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              Luminous Ceylon<span style={{ color: '#FF6B2C', fontSize: '24px', marginLeft: '2px' }}>.</span>
             </span>
           </div>
         </button>
@@ -152,30 +143,20 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
           ))}
         </nav>
 
-        {/* Desktop CTA + Mobile Toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        {/* Actions Wrapper */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <button
             id="header-book-btn"
             onClick={onOpenBooking}
-            className="hidden lg:flex items-center"
+            className="flex items-center justify-center w-11 h-11 lg:w-auto lg:h-auto p-0 lg:py-2.5 lg:px-6 rounded-xl lg:rounded-full bg-gradient-to-r from-[#FF6B2C] to-[#E04D14] text-white shadow-lg shadow-[#FF6B2C]/20 hover:shadow-xl hover:shadow-[#FF6B2C]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
             style={{
-              gap: '8px',
-              background: 'linear-gradient(135deg, #FF6B2C 0%, #E04D14 100%)',
-              color: 'white',
-              padding: '10px 24px',
-              borderRadius: '9999px',
-              fontSize: '13px',
-              fontWeight: '600',
-              fontFamily: 'var(--font-body)',
-              letterSpacing: '0.02em',
               border: 'none',
               cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              boxShadow: '0 4px 16px rgba(255, 107, 44, 0.25)',
+              fontFamily: 'var(--font-body)',
             }}
           >
             <Calendar style={{ width: '16px', height: '16px' }} />
-            <span>Book Session</span>
+            <span className="hidden lg:inline ml-2 font-semibold text-[13px] tracking-wide whitespace-nowrap">Book Session</span>
           </button>
 
           {/* Mobile Toggle */}
@@ -183,19 +164,9 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
             id="mobile-menu-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
-            className="lg:hidden"
+            className="lg:hidden w-11 h-11 rounded-xl bg-[#0E131E]/90 border border-[#252D3F] hover:border-[#FF6B2C]/50 flex items-center justify-center transition-all duration-300 cursor-pointer"
             style={{
-              width: '44px',
-              height: '44px',
-              borderRadius: '12px',
-              background: 'rgba(14, 19, 30, 0.9)',
-              border: '1px solid rgba(50, 60, 85, 0.6)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               color: mobileMenuOpen ? '#FF6B2C' : 'white',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
             }}
           >
             {mobileMenuOpen ? <X style={{ width: '20px', height: '20px' }} /> : <Menu style={{ width: '20px', height: '20px' }} />}

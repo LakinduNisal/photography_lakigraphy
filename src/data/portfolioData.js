@@ -139,8 +139,7 @@ export const SERVICES = [
       "2 Senior Photojournalists + Drone Operator",
       "600+ Color-Graded High-Res Images",
       "Fine Art Printed Linen Wedding Album",
-      "Complimentary Galle Fort or Ella Pre-Wedding Shoot",
-      "AI Caption & Hashtag Suite for Social Sharing"
+      "Complimentary Galle Fort or Ella Pre-Wedding Shoot"
     ],
     icon: "Heart"
   },
@@ -173,20 +172,6 @@ export const SERVICES = [
       "Fast 48-Hour Rush Delivery Option"
     ],
     icon: "Building"
-  },
-  {
-    id: "ai-suite",
-    title: "AI Ceylon Content Studio",
-    subtitle: "Automated Sri Lankan Social Copy",
-    price: "Included Free with All Bookings",
-    description: "Our proprietary AI engine crafts engaging captions, Sinhala/English hashtags, and storytelling copy tailored for Sri Lankan & global audiences.",
-    features: [
-      "Multi-Platform Format (Instagram, Facebook, LinkedIn)",
-      "Tropical & Cultural Tone Customization",
-      "Automated Island Tourism & Wedding SEO Hashtags",
-      "Unlimited Copy Generation for Clients"
-    ],
-    icon: "Sparkles"
   }
 ];
 

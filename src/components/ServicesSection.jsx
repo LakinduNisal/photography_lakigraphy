@@ -2,7 +2,7 @@ import React from 'react';
 import { SERVICES } from '../data/portfolioData';
 import { Heart, Camera, Building, Sparkles, Check, ArrowRight } from 'lucide-react';
 
-export default function ServicesSection({ onOpenBooking, onOpenAITool }) {
+export default function ServicesSection({ onOpenBooking }) {
   const iconMap = { Heart, Camera, Building, Sparkles };
 
   return (
@@ -22,35 +22,24 @@ export default function ServicesSection({ onOpenBooking, onOpenAITool }) {
             What We <span className="italic gradient-text">Offer</span>
           </h2>
           <p className="text-[15px] sm:text-base text-[#8B95A9] mt-5 leading-relaxed max-w-2xl">
-            From intimate wedding photojournalism to high-fashion portraiture and AI-powered content workflows, we deliver excellence at every frame.
+            From intimate wedding photojournalism to high-fashion portraiture and premium boutique resort photography, we deliver excellence at every frame.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {SERVICES.map((service) => {
             const IconComponent = iconMap[service.icon] || Camera;
-            const isAIService = service.id === 'ai-suite';
 
             return (
               <div
                 key={service.id}
-                className={`rounded-[1.5rem] p-7 sm:p-9 border transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between relative group ${
-                  isAIService
-                    ? 'bg-gradient-to-br from-[#0C1018] via-[#0C1018] to-[#141922] border-[#FF6B2C]/30 shadow-xl shadow-[#FF6B2C]/8 hover:shadow-2xl hover:shadow-[#FF6B2C]/15 animate-border-glow'
-                    : 'bg-[#0C1018] border-[#1E2536] hover:border-[#FF6B2C]/30 hover:shadow-2xl hover:shadow-[#FF6B2C]/8'
-                }`}
+                className="rounded-[1.5rem] p-7 sm:p-9 border bg-[#0C1018] border-[#1E2536] hover:border-[#FF6B2C]/30 hover:shadow-2xl hover:shadow-[#FF6B2C]/8 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between relative group"
               >
                 <div>
                   {/* Icon & Price */}
                   <div className="flex items-center justify-between mb-7">
-                    <div
-                      className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${
-                        isAIService
-                          ? 'bg-gradient-to-br from-[#FF6B2C] to-[#E04D14] text-white shadow-lg shadow-[#FF6B2C]/25'
-                          : 'bg-[#141922] text-[#FF6B2C] border border-[#1E2536]'
-                      }`}
-                    >
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 bg-[#141922] text-[#FF6B2C] border border-[#1E2536]">
                       <IconComponent className="w-6 h-6" />
                     </div>
 
@@ -86,23 +75,13 @@ export default function ServicesSection({ onOpenBooking, onOpenAITool }) {
 
                 {/* CTA */}
                 <div className="mt-10 pt-6">
-                  {isAIService ? (
-                    <button
-                      onClick={onOpenAITool}
-                      className="w-full bg-gradient-to-r from-[#FF6B2C] to-[#E04D14] text-white py-4 rounded-xl font-semibold text-[13px] uppercase tracking-wider hover:shadow-lg hover:shadow-[#FF6B2C]/25 transition-all duration-300 flex items-center justify-center gap-2"
-                    >
-                      <Sparkles className="w-4 h-4 text-amber-300" />
-                      <span>Launch AI Tool</span>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={onOpenBooking}
-                      className="w-full glass hover:bg-white/5 text-white py-4 rounded-xl font-semibold text-[13px] uppercase tracking-wider hover:border-[#FF6B2C]/30 transition-all duration-300 flex items-center justify-center gap-2 group"
-                    >
-                      <span>Book Service</span>
-                      <ArrowRight className="w-4 h-4 text-[#FF6B2C] group-hover:translate-x-1 transition-transform duration-300" />
-                    </button>
-                  )}
+                  <button
+                    onClick={onOpenBooking}
+                    className="w-full glass hover:bg-white/5 text-white py-4 rounded-xl font-semibold text-[13px] uppercase tracking-wider hover:border-[#FF6B2C]/30 transition-all duration-300 flex items-center justify-center gap-2 group"
+                  >
+                    <span>Book Service</span>
+                    <ArrowRight className="w-4 h-4 text-[#FF6B2C] group-hover:translate-x-1 transition-transform duration-300" />
+                  </button>
                 </div>
               </div>
             );

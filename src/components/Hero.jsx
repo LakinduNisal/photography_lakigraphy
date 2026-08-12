@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
-export default function Hero({ onExplorePortfolio, onOpenAITool }) {
+export default function Hero({ onExplorePortfolio }) {
   const comets = [
     { top: '12%', left: '8%', size: 6, delay: '0s', duration: '7s', color: '#FF6B2C' },
     { top: '22%', left: '48%', size: 4, delay: '1.5s', duration: '8s', color: '#FFB088' },
@@ -78,14 +78,6 @@ export default function Hero({ onExplorePortfolio, onOpenAITool }) {
               >
                 <span>View Portfolio</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-
-              <button
-                id="hero-ai-tool-btn"
-                onClick={onOpenAITool}
-                className="bg-[#0C1018]/80 hover:bg-[#141922] text-white border border-[#252D3F] hover:border-[#FF6B2C]/40 px-7 py-3.5 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-2.5"
-              >
-                <span>AI Caption Tool</span>
               </button>
             </div>
           </div>

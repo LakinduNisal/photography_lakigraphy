@@ -35,7 +35,7 @@ export default function Footer({ setActiveTab }) {
               </span>
             </div>
             <p className="text-xs text-[#5F6A80] leading-relaxed">
-              A premium, AI-powered portfolio and content assistant for professional photographers to showcase their work and scale creative presence.
+              A premium editorial portfolio for professional photography showcasing visual storytelling, cultural heritage, and destination elegance.
             </p>
             <div className="flex items-center gap-2 pt-2">
               {[
@@ -60,7 +60,6 @@ export default function Footer({ setActiveTab }) {
                 { id: 'home', label: 'Home' },
                 { id: 'portfolio', label: 'Portfolio Gallery' },
                 { id: 'services', label: 'Services & Offers' },
-                { id: 'ai-tool', label: 'AI Caption Generator', sparkle: true },
                 { id: 'about', label: 'About & Workflow' },
                 { id: 'pricing', label: 'Pricing Investment' },
                 { id: 'contact', label: 'Contact Studio' },
@@ -81,15 +80,15 @@ export default function Footer({ setActiveTab }) {
           {/* Services */}
           <div>
             <h4 className="text-[11px] font-semibold text-white uppercase tracking-[0.15em] mb-5">
-              AI Tools & Services
+              Our Services
             </h4>
             <ul className="space-y-2.5 text-[13px] text-[#5F6A80]">
               {[
-                'Multi-Platform Caption Copywriter',
-                'SEO Hashtag Cluster Discovery',
-                'Fine Art Wedding Photojournalism',
-                'Vogue Editorial Studio Shoot',
-                'Architecture & Commercial Licensing',
+                'Poruwa & Destination Wedding',
+                'Editorial & Personal Branding',
+                'Resort & Architectural Shoots',
+                'Archival Fine Art Album Design',
+                'Commercial Press Licensing',
               ].map((item) => (
                 <li key={item} className="hover:text-white cursor-pointer transition-colors duration-300">
                   {item}
@@ -104,7 +103,7 @@ export default function Footer({ setActiveTab }) {
               Editorial Insights
             </h4>
             <p className="text-xs text-[#5F6A80] leading-relaxed mb-4">
-              Subscribe to receive curated photography case studies, AI prompt guides, and exclusive booking dates.
+              Subscribe to receive curated photography case studies, behind-the-scenes stories, and exclusive studio booking slots.
             </p>
             <form onSubmit={handleNewsletter} className="space-y-2">
               <div className="relative">
