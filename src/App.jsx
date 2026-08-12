@@ -51,7 +51,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030508] text-[#E2E5EC] selection:bg-[#FF571E] selection:text-white font-sans antialiased">
+    <div className="min-h-screen relative">
       {/* Navigation Header */}
       <Header
         activeTab={activeTab}

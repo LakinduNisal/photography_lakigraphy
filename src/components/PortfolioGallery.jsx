@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_ITEMS } from '../data/portfolioData';
 import LightboxModal from './LightboxModal';
-import { Eye, MapPin, Sliders } from 'lucide-react';
+import { Eye, MapPin, Aperture } from 'lucide-react';
 
 export default function PortfolioGallery() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -13,20 +13,13 @@ export default function PortfolioGallery() {
     ? PORTFOLIO_ITEMS
     : PORTFOLIO_ITEMS.filter((item) => item.category === selectedCategory);
 
-  const openLightbox = (index) => {
-    setLightboxIndex(index);
-  };
-
-  const closeLightbox = () => {
-    setLightboxIndex(null);
-  };
-
+  const openLightbox = (index) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
   const nextLightbox = () => {
     if (lightboxIndex !== null && lightboxIndex < filteredItems.length - 1) {
       setLightboxIndex(lightboxIndex + 1);
     }
   };
-
   const prevLightbox = () => {
     if (lightboxIndex !== null && lightboxIndex > 0) {
       setLightboxIndex(lightboxIndex - 1);
@@ -34,32 +27,33 @@ export default function PortfolioGallery() {
   };
 
   return (
-    <section id="portfolio" className="py-24 bg-[#030508] relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Section Title Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#FF571E]/10 text-[#FF571E] border border-[#FF571E]/20 mb-4">
+    <section id="portfolio" className="py-24 sm:py-32 relative noise-overlay">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.15em] bg-[#FF6B2C]/8 text-[#FF6B2C] border border-[#FF6B2C]/15 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B2C]" />
             Curated Visual Archive
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
-            Our Portfolio & Craft
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.1]">
+            Our Portfolio & <span className="italic gradient-text">Craft</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#808898] mt-4 font-sans leading-relaxed">
+          <p className="text-[15px] sm:text-base text-[#8B95A9] mt-5 leading-relaxed max-w-2xl">
             Explore a curated collection of our finest photography work across various genres, capturing deep raw emotion, light play, and cinematic elegance.
           </p>
         </div>
 
-        {/* Filter Pills Navigation */}
+        {/* Filter Pills */}
         <div className="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-12 no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat}
               id={`filter-pill-${cat.toLowerCase()}`}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 whitespace-nowrap ${
+              className={`px-5 py-2.5 rounded-full text-[12px] font-semibold tracking-wide transition-all duration-300 whitespace-nowrap ${
                 selectedCategory === cat
-                  ? 'bg-gradient-to-r from-[#FF571E] to-[#C64E12] text-white shadow-lg shadow-[#FF571E]/20 scale-105'
-                  : 'bg-[#0B0F19] text-[#808898] hover:text-white hover:bg-[#181E29] border border-[#202633]'
+                  ? 'bg-gradient-to-r from-[#FF6B2C] to-[#E04D14] text-white shadow-lg shadow-[#FF6B2C]/25 scale-105'
+                  : 'glass text-[#8B95A9] hover:text-white hover:bg-white/8'
               }`}
             >
               {cat}
@@ -67,61 +61,60 @@ export default function PortfolioGallery() {
           ))}
         </div>
 
-        {/* Responsive Photo Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Photo Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {filteredItems.map((item, index) => (
             <div
               key={item.id}
               onClick={() => openLightbox(index)}
-              className="group relative rounded-2xl bg-[#0B0F19] border border-[#202633] overflow-hidden hover:border-[#FF571E]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#FF571E]/10 cursor-pointer"
+              className="group relative rounded-2xl bg-[#0C1018] border border-[#1E2536] overflow-hidden hover:border-[#FF6B2C]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#FF6B2C]/8 cursor-pointer"
             >
-              {/* Image Container */}
-              <div className="aspect-[4/3] w-full overflow-hidden relative bg-black">
+              {/* Image */}
+              <div className="aspect-[4/3] w-full overflow-hidden relative">
                 <img
                   src={item.image}
                   alt={item.title}
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-700 ease-out"
                 />
 
-                {/* Shimmer Light Sweep Line Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer pointer-events-none z-20" />
+                {/* Shimmer Sweep */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer pointer-events-none z-20" />
 
-                {/* Top Category Badge */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#030508]/80 backdrop-blur-md text-white border border-white/10">
+                {/* Category Badge */}
+                <div className="absolute top-3.5 left-3.5 z-10">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider glass text-white">
                     {item.category}
                   </span>
                 </div>
 
-                {/* Location Tag */}
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-medium bg-black/60 backdrop-blur-md text-[#808898] flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-[#FF571E]" />
+                {/* Location */}
+                <div className="absolute top-3.5 right-3.5 z-10">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-medium glass text-[#8B95A9] flex items-center gap-1">
+                    <MapPin className="w-2.5 h-2.5 text-[#FF6B2C]" />
                     {item.location.split(',')[0]}
                   </span>
                 </div>
 
-                {/* Gradient Hover Overlay with Details */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="text-[#FF571E] text-xs font-semibold uppercase tracking-wider mb-1 flex items-center gap-1">
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#06080D]/95 via-[#06080D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-400 flex flex-col justify-end p-5 sm:p-6">
+                  <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                    <div className="text-[#FF6B2C] text-[11px] font-semibold uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                       <Eye className="w-3.5 h-3.5" />
                       <span>Click to Expand</span>
                     </div>
 
-                    <h3 className="font-display text-xl font-bold text-white leading-snug">
+                    <h3 className="font-display text-xl font-normal text-white leading-snug">
                       {item.title}
                     </h3>
 
-                    <p className="text-xs text-gray-300 line-clamp-2 mt-1.5 font-sans">
+                    <p className="text-xs text-[#8B95A9] line-clamp-2 mt-1.5">
                       {item.description}
                     </p>
 
-                    {/* Camera metadata pill */}
-                    <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-gray-400 font-mono">
+                    <div className="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-[#5F6A80] font-mono">
                       <span className="flex items-center gap-1">
-                        <Sliders className="w-3 h-3 text-[#FF571E]" />
+                        <Aperture className="w-3 h-3 text-[#FF6B2C]" />
                         {item.camera}
                       </span>
                       <span>{item.lens}</span>
@@ -134,7 +127,7 @@ export default function PortfolioGallery() {
         </div>
       </div>
 
-      {/* Lightbox Modal Trigger */}
+      {/* Lightbox */}
       {lightboxIndex !== null && (
         <LightboxModal
           item={filteredItems[lightboxIndex]}

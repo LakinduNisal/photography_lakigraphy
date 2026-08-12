@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Camera, Sparkles, Send, Check } from 'lucide-react';
 import { InstagramIcon, TwitterIcon, LinkedinIcon } from './SocialIcons';
 
-
 export default function Footer({ setActiveTab }) {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
@@ -18,95 +17,93 @@ export default function Footer({ setActiveTab }) {
 
   const scrollTo = (id) => {
     setActiveTab(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <footer className="w-full bg-[#070A12] border-t border-[#202633]/60 py-16 px-6 lg:px-12 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <footer className="w-full bg-[#0A0E16] border-t border-[#1E2536]/40 pt-16 pb-10 px-5 sm:px-8 lg:px-12 relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Column 1: Brand Info */}
+          {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FF571E] to-[#C64E12] flex items-center justify-center text-white shadow-lg shadow-[#FF571E]/20">
-                <Camera className="w-5 h-5" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FF6B2C] to-[#E04D14] flex items-center justify-center text-white shadow-lg shadow-[#FF6B2C]/20">
+                <Camera className="w-5 h-5" strokeWidth={2.5} />
               </div>
-              <span className="font-display text-2xl font-bold text-white tracking-tight">
-                Luminous Ceylon<span className="text-[#FF571E]">.</span>
+              <span className="font-display text-xl text-white tracking-tight">
+                Luminous Ceylon<span className="text-[#FF6B2C]">.</span>
               </span>
             </div>
-            <p className="text-xs text-[#808898] leading-relaxed font-sans">
-              A premium, AI-powered portfolio and content assistant for professional photographers to showcase their work and scale creative presence worldwide.
+            <p className="text-xs text-[#5F6A80] leading-relaxed">
+              A premium, AI-powered portfolio and content assistant for professional photographers to showcase their work and scale creative presence.
             </p>
             <div className="flex items-center gap-2 pt-2">
-              <a href="#instagram" aria-label="Instagram" className="w-9 h-9 rounded-xl bg-[#0B0F19] border border-[#202633] flex items-center justify-center text-[#808898] hover:text-[#FF571E] hover:border-[#FF571E] transition-all">
-                <InstagramIcon className="w-4 h-4" />
-              </a>
-              <a href="#twitter" aria-label="Twitter" className="w-9 h-9 rounded-xl bg-[#0B0F19] border border-[#202633] flex items-center justify-center text-[#808898] hover:text-[#FF571E] hover:border-[#FF571E] transition-all">
-                <TwitterIcon className="w-4 h-4" />
-              </a>
-              <a href="#linkedin" aria-label="LinkedIn" className="w-9 h-9 rounded-xl bg-[#0B0F19] border border-[#202633] flex items-center justify-center text-[#808898] hover:text-[#FF571E] hover:border-[#FF571E] transition-all">
-                <LinkedinIcon className="w-4 h-4" />
-              </a>
+              {[
+                { href: '#instagram', Icon: InstagramIcon, label: 'Instagram' },
+                { href: '#twitter', Icon: TwitterIcon, label: 'Twitter' },
+                { href: '#linkedin', Icon: LinkedinIcon, label: 'LinkedIn' },
+              ].map(({ href, Icon, label }) => (
+                <a key={href} href={href} aria-label={label} className="w-9 h-9 rounded-xl glass flex items-center justify-center text-[#5F6A80] hover:text-[#FF6B2C] hover:border-[#FF6B2C]/50 transition-all duration-300">
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Column 2: Navigation Links */}
+          {/* Navigation */}
           <div>
-            <h4 className="font-display font-bold text-white text-base mb-4 uppercase tracking-wider text-xs">
+            <h4 className="text-[11px] font-semibold text-white uppercase tracking-[0.15em] mb-5">
               Quick Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#808898]">
-              <li>
-                <button onClick={() => scrollTo('home')} className="hover:text-white transition-colors">Home</button>
-              </li>
-              <li>
-                <button onClick={() => scrollTo('portfolio')} className="hover:text-white transition-colors">Portfolio Gallery</button>
-              </li>
-              <li>
-                <button onClick={() => scrollTo('services')} className="hover:text-white transition-colors">Services & Offers</button>
-              </li>
-              <li>
-                <button onClick={() => scrollTo('ai-tool')} className="hover:text-[#FF571E] transition-colors flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3 text-amber-300" />
-                  <span>AI Caption Generator</span>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollTo('about')} className="hover:text-white transition-colors">About & Workflow</button>
-              </li>
-              <li>
-                <button onClick={() => scrollTo('pricing')} className="hover:text-white transition-colors">Pricing Investment</button>
-              </li>
-              <li>
-                <button onClick={() => scrollTo('contact')} className="hover:text-white transition-colors">Contact Studio</button>
-              </li>
+            <ul className="space-y-2.5 text-[13px] text-[#5F6A80]">
+              {[
+                { id: 'home', label: 'Home' },
+                { id: 'portfolio', label: 'Portfolio Gallery' },
+                { id: 'services', label: 'Services & Offers' },
+                { id: 'ai-tool', label: 'AI Caption Generator', sparkle: true },
+                { id: 'about', label: 'About & Workflow' },
+                { id: 'pricing', label: 'Pricing Investment' },
+                { id: 'contact', label: 'Contact Studio' },
+              ].map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() => scrollTo(item.id)}
+                    className="hover:text-white transition-colors duration-300 flex items-center gap-1.5"
+                  >
+                    {item.sparkle && <Sparkles className="w-3 h-3 text-amber-300" />}
+                    {item.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3: AI Tools & Services */}
+          {/* Services */}
           <div>
-            <h4 className="font-display font-bold text-white text-base mb-4 uppercase tracking-wider text-xs">
+            <h4 className="text-[11px] font-semibold text-white uppercase tracking-[0.15em] mb-5">
               AI Tools & Services
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#808898]">
-              <li className="hover:text-white cursor-pointer">Multi-Platform Caption Copywriter</li>
-              <li className="hover:text-white cursor-pointer">SEO Hashtag Cluster Discovery</li>
-              <li className="hover:text-white cursor-pointer">Fine Art Wedding Photojournalism</li>
-              <li className="hover:text-white cursor-pointer">Vogue Editorial Studio Shoot</li>
-              <li className="hover:text-white cursor-pointer">Architecture & Commercial Licensing</li>
+            <ul className="space-y-2.5 text-[13px] text-[#5F6A80]">
+              {[
+                'Multi-Platform Caption Copywriter',
+                'SEO Hashtag Cluster Discovery',
+                'Fine Art Wedding Photojournalism',
+                'Vogue Editorial Studio Shoot',
+                'Architecture & Commercial Licensing',
+              ].map((item) => (
+                <li key={item} className="hover:text-white cursor-pointer transition-colors duration-300">
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 4: Newsletter Signup */}
+          {/* Newsletter */}
           <div>
-            <h4 className="font-display font-bold text-white text-base mb-4 uppercase tracking-wider text-xs">
+            <h4 className="text-[11px] font-semibold text-white uppercase tracking-[0.15em] mb-5">
               Editorial Insights
             </h4>
-            <p className="text-xs text-[#808898] leading-relaxed mb-4">
+            <p className="text-xs text-[#5F6A80] leading-relaxed mb-4">
               Subscribe to receive curated photography case studies, AI prompt guides, and exclusive booking dates.
             </p>
             <form onSubmit={handleNewsletter} className="space-y-2">
@@ -116,31 +113,33 @@ export default function Footer({ setActiveTab }) {
                   required
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="w-full bg-[#0B0F19] border border-[#202633] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#FF571E] placeholder:text-[#808898]/60"
+                  placeholder="Enter your email"
+                  className="w-full bg-[#0C1018] border border-[#1E2536] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#FF6B2C]/50 transition-colors placeholder:text-[#5F6A80]/50"
                 />
                 <button
                   type="submit"
                   aria-label="Subscribe to newsletter"
-                  className="absolute right-1 top-1 bottom-1 px-3 bg-[#FF571E] text-white rounded-lg flex items-center justify-center hover:bg-[#FF571E]/90 transition-colors"
+                  className="absolute right-1 top-1 bottom-1 px-3 bg-[#FF6B2C] text-white rounded-lg flex items-center justify-center hover:bg-[#E04D14] transition-colors"
                 >
                   {subscribed ? <Check className="w-3.5 h-3.5" /> : <Send className="w-3.5 h-3.5" />}
                 </button>
               </div>
               {subscribed && (
-                <div className="text-[11px] text-green-400 font-medium">Subscribed successfully!</div>
+                <div className="text-[11px] text-emerald-400 font-medium animate-fade-in">Subscribed successfully!</div>
               )}
             </form>
           </div>
         </div>
 
-        {/* Bottom Copyright Bar */}
-        <div className="pt-8 mt-12 border-t border-[#202633]/60 flex flex-col sm:flex-row items-center justify-between text-xs text-[#808898] gap-4 font-mono">
-          <div>© 2026 Luminous Ceylon. All rights reserved. Designed for luxury photography agencies.</div>
+        {/* Copyright */}
+        <div className="pt-8 mt-12 border-t border-[#1E2536]/40 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#5F6A80] gap-4 font-mono">
+          <div>© 2026 Luminous Ceylon. All rights reserved.</div>
           <div className="flex gap-6">
-            <span className="hover:text-white cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-white cursor-pointer">Terms of Service</span>
-            <span className="hover:text-white cursor-pointer">Commercial License</span>
+            {['Privacy Policy', 'Terms of Service', 'Commercial License'].map((item) => (
+              <span key={item} className="hover:text-white cursor-pointer transition-colors duration-300">
+                {item}
+              </span>
+            ))}
           </div>
         </div>
       </div>
