@@ -32,6 +32,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
   };
 
   return (
+    <>
     <header
       id="main-header"
       style={{
@@ -114,14 +115,14 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
                 whiteSpace: 'nowrap',
                 ...(activeTab === link.id
                   ? {
-                      background: 'linear-gradient(135deg, #FF6B2C, #E04D14)',
-                      color: 'white',
-                      boxShadow: '0 4px 14px rgba(255, 107, 44, 0.35)',
-                    }
+                    background: 'linear-gradient(135deg, #FF6B2C, #E04D14)',
+                    color: 'white',
+                    boxShadow: '0 4px 14px rgba(255, 107, 44, 0.35)',
+                  }
                   : {
-                      background: 'transparent',
-                      color: '#8B95A9',
-                    }
+                    background: 'transparent',
+                    color: '#8B95A9',
+                  }
                 ),
               }}
               onMouseEnter={(e) => {
@@ -173,13 +174,14 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
           </button>
         </div>
       </div>
+    </header>
 
       {/* Mobile Fullscreen Overlay */}
       <div
         style={{
           position: 'fixed',
           inset: 0,
-          zIndex: 40,
+          zIndex: 9999,
           transition: 'opacity 0.4s ease, visibility 0.4s ease',
           opacity: mobileMenuOpen ? 1 : 0,
           visibility: mobileMenuOpen ? 'visible' : 'hidden',
@@ -192,7 +194,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'rgba(6, 8, 13, 0.97)',
+            background: '#06080D',
             backdropFilter: 'blur(32px)',
           }}
           onClick={() => setMobileMenuOpen(false)}
@@ -209,6 +211,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
           paddingLeft: '28px',
           paddingRight: '28px',
           paddingBottom: '36px',
+          background: '#06080D',
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1 }}>
             {navLinks.map((link, idx) => (
@@ -274,6 +277,6 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }
