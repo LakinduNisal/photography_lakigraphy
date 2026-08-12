@@ -28,7 +28,11 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }) {
   const handleNavClick = (id) => {
     setActiveTab(id);
     setMobileMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (window.lenis) {
+      window.lenis.scrollTo(`#${id}`, { offset: -20, duration: 1.2 });
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

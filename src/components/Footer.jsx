@@ -17,7 +17,11 @@ export default function Footer({ setActiveTab }) {
 
   const scrollTo = (id) => {
     setActiveTab(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (window.lenis) {
+      window.lenis.scrollTo(`#${id}`, { offset: -20, duration: 1.2 });
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

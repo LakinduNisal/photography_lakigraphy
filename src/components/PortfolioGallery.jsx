@@ -50,11 +50,10 @@ export default function PortfolioGallery() {
               key={cat}
               id={`filter-pill-${cat.toLowerCase()}`}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-[12px] font-semibold tracking-wide transition-all duration-300 whitespace-nowrap ${
-                selectedCategory === cat
+              className={`px-5 py-2.5 rounded-full text-[12px] font-semibold tracking-wide transition-all duration-300 whitespace-nowrap ${selectedCategory === cat
                   ? 'bg-gradient-to-r from-[#FF6B2C] to-[#E04D14] text-white shadow-lg shadow-[#FF6B2C]/25 scale-105'
                   : 'glass text-[#8B95A9] hover:text-white hover:bg-white/8'
-              }`}
+                }`}
             >
               {cat}
             </button>

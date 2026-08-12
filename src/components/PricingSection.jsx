@@ -28,11 +28,10 @@ export default function PricingSection({ onOpenBooking }) {
           {PRICING_PLANS.map((plan) => (
             <div
               key={plan.id}
-              className={`rounded-[2rem] p-7 sm:p-9 flex flex-col justify-between relative transition-all duration-400 hover:-translate-y-1 ${
-                plan.highlighted
+              className={`rounded-[2rem] p-7 sm:p-9 flex flex-col justify-between relative transition-all duration-400 hover:-translate-y-1 ${plan.highlighted
                   ? 'bg-[#0C1018] border-2 border-[#FF6B2C]/60 shadow-2xl shadow-[#FF6B2C]/10'
                   : 'bg-[#0C1018] border border-[#1E2536] hover:border-[#FF6B2C]/25'
-              }`}
+                }`}
             >
               {plan.highlighted && (
                 <div className="absolute -top-3.5 right-8 bg-gradient-to-r from-[#FF6B2C] to-[#E04D14] text-white px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-lg shadow-[#FF6B2C]/25 flex items-center gap-1.5 animate-pulse-ring">
@@ -65,11 +64,10 @@ export default function PricingSection({ onOpenBooking }) {
               <div className="mt-10">
                 <button
                   onClick={onOpenBooking}
-                  className={`w-full py-4 rounded-2xl font-semibold text-[13px] uppercase tracking-wider transition-all duration-300 ${
-                    plan.highlighted
+                  className={`w-full py-4 rounded-2xl font-semibold text-[13px] uppercase tracking-wider transition-all duration-300 ${plan.highlighted
                       ? 'bg-gradient-to-r from-[#FF6B2C] to-[#E04D14] text-white hover:shadow-xl hover:shadow-[#FF6B2C]/25 hover:scale-[1.01] active:scale-[0.99]'
                       : 'glass text-white hover:bg-white/5 hover:border-[#FF6B2C]/30'
-                  }`}
+                    }`}
                 >
                   {plan.cta}
                 </button>
@@ -93,9 +91,8 @@ export default function PricingSection({ onOpenBooking }) {
               return (
                 <div
                   key={index}
-                  className={`rounded-2xl bg-[#0C1018] border overflow-hidden transition-all duration-300 ${
-                    isOpen ? 'border-[#FF6B2C]/25' : 'border-[#1E2536]'
-                  }`}
+                  className={`rounded-2xl bg-[#0C1018] border overflow-hidden transition-all duration-300 ${isOpen ? 'border-[#FF6B2C]/25' : 'border-[#1E2536]'
+                    }`}
                 >
                   <button
                     onClick={() => toggleFaq(index)}
@@ -105,16 +102,14 @@ export default function PricingSection({ onOpenBooking }) {
                       {faq.question}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-[#FF6B2C] transition-transform duration-300 shrink-0 ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
+                      className={`w-5 h-5 text-[#FF6B2C] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''
+                        }`}
                     />
                   </button>
 
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}
+                    className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      }`}
                   >
                     <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-sm text-[#8B95A9] leading-relaxed border-t border-[#1E2536]/50 pt-4">
                       {faq.answer}

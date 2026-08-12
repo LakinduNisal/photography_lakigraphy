@@ -53,10 +53,10 @@ export default function Hero({ onExplorePortfolio }) {
           <div className="lg:col-span-7 flex flex-col items-start text-left">
 
             {/* Main Headline */}
-            <h1 className="font-display text-[clamp(2.6rem,5.2vw,4.6rem)] font-normal leading-[1.08] tracking-tight text-white animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+            <h1 className="font-display text-[clamp(2.6rem,5.2vw,4.6rem)] font-normal leading-[1.08] tracking-tight text-white animate-text-reveal">
               Capturing <br />
-              <span className="text-[#FF6B2C]">Moments</span> <br />
-              That Tell <span className="text-[#FF6B2C]">Stories</span>
+              <span className="gradient-text">Moments</span> <br />
+              That Tell <span className="gradient-text">Stories</span>
             </h1>
 
             {/* Category / Subtitle */}

@@ -26,7 +26,9 @@
     --font-body: "Sora", -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -38,6 +40,26 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+
   body {
     font-family: var(--font-body);
     background-color: var(--bg-deep);
@@ -46,7 +68,10 @@
     line-height: 1.6;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
   }
 
@@ -56,113 +81,293 @@
   }
 
   /* ── Scrollbar ── */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg-deep); }
-  ::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-default);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
 }
 
 /* ── Keyframes ── */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.08); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
 }
 
 @keyframes floatSlow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes kenburnsSlow {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.1) translate(-1%, -1%); }
-  100% { transform: scale(1) translate(0, 0); }
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+
+  50% {
+    transform: scale(1.1) translate(-1%, -1%);
+  }
+
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
 }
 
 @keyframes marqueeInfinite {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes scanline {
-  0% { top: 0%; opacity: 0.8; }
-  50% { top: 95%; opacity: 1; }
-  100% { top: 0%; opacity: 0.8; }
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+
+  50% {
+    top: 95%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 0%;
+    opacity: 0.8;
+  }
 }
 
 @keyframes rotateSlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes pulseRing {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 107, 44, 0.6); }
-  70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(255, 107, 44, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 107, 44, 0); }
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 107, 44, 0.6);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 14px rgba(255, 107, 44, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 107, 44, 0);
+  }
 }
 
 @keyframes textGlow {
-  0%, 100% { text-shadow: 0 0 10px rgba(255, 107, 44, 0.15); }
-  50% { text-shadow: 0 0 30px rgba(255, 107, 44, 0.45); }
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(255, 107, 44, 0.15);
+  }
+
+  50% {
+    text-shadow: 0 0 30px rgba(255, 107, 44, 0.45);
+  }
 }
 
 @keyframes cometFloat {
-  0% { transform: translateY(0px) translateX(0px) scale(0.5); opacity: 0.08; }
-  50% { transform: translateY(-100px) translateX(45px) scale(1.3); opacity: 0.85; }
-  100% { transform: translateY(-200px) translateX(-35px) scale(0.2); opacity: 0; }
+  0% {
+    transform: translateY(0px) translateX(0px) scale(0.5);
+    opacity: 0.08;
+  }
+
+  50% {
+    transform: translateY(-100px) translateX(45px) scale(1.3);
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: translateY(-200px) translateX(-35px) scale(0.2);
+    opacity: 0;
+  }
 }
 
 @keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes borderGlow {
-  0%, 100% { border-color: rgba(255, 107, 44, 0.15); }
-  50% { border-color: rgba(255, 107, 44, 0.5); }
+
+  0%,
+  100% {
+    border-color: rgba(255, 107, 44, 0.15);
+  }
+
+  50% {
+    border-color: rgba(255, 107, 44, 0.5);
+  }
 }
 
 /* ── Animation Classes ── */
-.animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.animate-fade-in { animation: fadeIn 0.5s ease-out both; }
-.animate-slide-in-right { animation: slideInRight 0.5s ease-out both; }
-.animate-pulse-glow { animation: pulseGlow 5s infinite ease-in-out; }
-.animate-float { animation: floatSlow 6s infinite ease-in-out; }
-.animate-kenburns { animation: kenburnsSlow 20s ease-in-out infinite alternate; }
-.animate-marquee { display: flex; width: max-content; animation: marqueeInfinite 32s linear infinite; }
-.animate-marquee:hover { animation-play-state: paused; }
-.animate-scanline { animation: scanline 2.5s ease-in-out infinite; }
-.animate-spin-slow { animation: rotateSlow 35s linear infinite; }
-.animate-shimmer { animation: shimmer 2s infinite; }
-.animate-pulse-ring { animation: pulseRing 2.5s infinite; }
-.animate-text-glow { animation: textGlow 3s infinite ease-in-out; }
-.animate-comet { animation: cometFloat 8s ease-in-out infinite; }
-.animate-gradient { background-size: 200% 200%; animation: gradientShift 4s ease-in-out infinite; }
-.animate-border-glow { animation: borderGlow 3s ease-in-out infinite; }
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out both;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 5s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: floatSlow 6s infinite ease-in-out;
+}
+
+.animate-kenburns {
+  animation: kenburnsSlow 20s ease-in-out infinite alternate;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeInfinite 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-scanline {
+  animation: scanline 2.5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: rotateSlow 35s linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 2.5s infinite;
+}
+
+.animate-text-glow {
+  animation: textGlow 3s infinite ease-in-out;
+}
+
+.animate-comet {
+  animation: cometFloat 8s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+.animate-border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
 
 /* ── Scrollbar Hider ── */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 /* ══════════════════════════════════════════════════════
    GLASS MORPHISM — Higher specificity to override Tailwind
@@ -182,15 +387,68 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   GRADIENT TEXT — Must use display:inline-block for clip
+   GRADIENT TEXT & TEXT ANIMATIONS
    ══════════════════════════════════════════════════════ */
+@keyframes gradientTextFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes textBlurReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+    filter: blur(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes textShineSweep {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .gradient-text {
   display: inline;
-  background: linear-gradient(135deg, #FF6B2C 0%, #FFB088 45%, #FF8A55 100%);
+  background: linear-gradient(135deg, #FF6B2C 0%, #FFB088 35%, #FF8A55 70%, #FF6B2C 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  animation: gradientTextFlow 6s ease-in-out infinite;
+}
+
+.animate-text-reveal {
+  animation: textBlurReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.text-shine {
+  background: linear-gradient(90deg, rgba(255,255,255,0.7) 0%, rgba(255,107,44,1) 50%, rgba(255,255,255,0.7) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShineSweep 5s linear infinite;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -206,6 +464,7 @@
 .noise-overlay {
   position: relative;
 }
+
 .noise-overlay::before {
   content: '';
   position: absolute;

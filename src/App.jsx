@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import BrandTicker from './components/BrandTicker';
@@ -14,6 +16,29 @@ import BookingModal from './components/BookingModal';
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
+
+  // Initialize Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+    window.lenis = lenis;
+
+    return () => {
+      lenis.destroy();
+      window.lenis = null;
+    };
+  }, []);
 
   // Scroll spy to update activeTab dynamically as user scrolls
   useEffect(() => {
@@ -41,7 +66,11 @@ export default function App() {
 
   const handleExplorePortfolio = () => {
     setActiveTab('portfolio');
-    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+    if (window.lenis) {
+      window.lenis.scrollTo('#portfolio', { offset: -20, duration: 1.2 });
+    } else {
+      document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
